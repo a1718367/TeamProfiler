@@ -1,0 +1,17 @@
+.card-header{
+    background-color: rgba(32, 35, 185, 0.938);
+    color: white;
+}
+.jumbotron{
+    background-color: rgba(32, 35, 185, 0.938);
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+}
+footer{
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    
+}
