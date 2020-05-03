@@ -5,6 +5,7 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
@@ -31,6 +32,7 @@ const chkemail = async (email) => {
     else{return true};
 };
 //
+
 
 
 
@@ -100,6 +102,7 @@ function empquestion(){
 }
 
 async function add(){
+    console.log("Start with Manager");
     const team = [];
     let role = "Manager";
     let newstaff;
@@ -124,7 +127,7 @@ async function add(){
                 newstaff = new Intern(iniqst.Name, iniqst.Id, iniqst.Email, additqst.SchoolName);
                 break;        
             default:
-                console.log("Something Wrong, Get Help!")
+                console.log("System Error, Get Help!")
                 break;
         }
         team.push(newstaff);
@@ -134,6 +137,12 @@ async function add(){
     } while (role != "No more to Add");
 
     console.log(team)
+    const html = render(team);
+    fs.writeFile(outputPath, html, err => {
+        if (err) throw err;
+        console.log(`File ${path.basename(outputPath)} has been created`)
+    })
+
 
 }
 
