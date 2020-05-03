@@ -24,6 +24,7 @@ PSO Co.
 ## Tests
 jest
 
+<img src = "./lib/screenshot.png" alt="screenshot" width = "500">
 ## Contacts
 ### Author: PangSzee Ong
 ### Email: null
