@@ -89,7 +89,7 @@ const empType = [
         message: "What Role Employee would you like to Add Next?",
         type: "list",
         name: "Role",
-        choices: ["Engener", "Intern", "No more to Add"]
+        choices: ["Engineer", "Intern", "No more to Add"]
 
     }
 
@@ -99,11 +99,51 @@ function empquestion(){
     return inquirer.prompt(initquestion);
 }
 
+async function add(){
+    const team = [];
+    let role = "Manager";
+    let newstaff;
+    let iniqst;
+    let additqst
+
+    do {
+        switch (role) {
+            case "Manager":
+                iniqst = await inquirer.prompt(initquestion);
+                additqst = await inquirer.prompt(additQMag);
+                newstaff = new Manager(iniqst.Name, iniqst.Id, iniqst.Email, additqst.OfficeNum);
+                break;
+            case "Engineer":
+                iniqst = await inquirer.prompt(initquestion);
+                additqst = await inquirer.prompt(additQEng);
+                newstaff = new Engineer(iniqst.Name, iniqst.Id, iniqst.Email, additqst.GitName);
+                break;        
+            case "Intern":
+                iniqst = await inquirer.prompt(initquestion);
+                additqst = await inquirer.prompt(additQIntern);
+                newstaff = new Intern(iniqst.Name, iniqst.Id, iniqst.Email, additqst.SchoolName);
+                break;        
+            default:
+                console.log("Something Wrong, Get Help!")
+                break;
+        }
+        team.push(newstaff);
+        const next = await inquirer.prompt(empType);
+        role = next.Role;
+        
+    } while (role != "No more to Add");
+
+    console.log(team)
+
+}
+
+
 async function init(){
     try {
         const initask = await empquestion();
         const Mqst = await inquirer.prompt(additQMag);
         const staff = new Manager(initask.Name, initask.Id,initask.Email,Mqst.OfficeNum);
+        console.log(staff, staff.getRole())
         
         
         
@@ -112,7 +152,7 @@ async function init(){
         console.log(error)
     }
 }
-init()
+add()
 
 
 // Write code to use inquirer to gather information about the development team members,
