@@ -102,7 +102,7 @@ function empquestion(){
 }
 
 async function add(){
-    console.log("Start with Manager");
+    console.log("*** Start with Manager ***");
     const team = [];
     let role = "Manager";
     let newstaff;
